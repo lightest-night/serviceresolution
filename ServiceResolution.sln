@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceResolution", "ServiceResolution\ServiceResolution.csproj", "{FADCC47D-0360-4E99-B1B6-D2872CD7365A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceResolution.Tests", "ServiceResolution.Tests\ServiceResolution.Tests.csproj", "{693C99AF-0334-423D-8D07-FDAB25201DCD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9509F992-D9E2-46FF-9322-F7832E3BA0A3}"
+ProjectSection(SolutionItems) = preProject
+	README.md = README.md
+	appveyor.yml = appveyor.yml
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FADCC47D-0360-4E99-B1B6-D2872CD7365A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FADCC47D-0360-4E99-B1B6-D2872CD7365A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FADCC47D-0360-4E99-B1B6-D2872CD7365A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FADCC47D-0360-4E99-B1B6-D2872CD7365A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693C99AF-0334-423D-8D07-FDAB25201DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693C99AF-0334-423D-8D07-FDAB25201DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693C99AF-0334-423D-8D07-FDAB25201DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693C99AF-0334-423D-8D07-FDAB25201DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
