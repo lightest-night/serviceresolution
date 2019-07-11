@@ -34,23 +34,17 @@ namespace LightestNight.System.ServiceResolution
             if (!assemblies.Contains(executingAssembly))
                 assemblies = new List<Assembly>(assemblies) {executingAssembly}.ToArray();
 
-            var exposesDelegatesType = typeof(IExposesDelegates<>);
             var serviceFactory = services.BuildServiceProvider().GetService<ServiceFactory>() ?? Activator.CreateInstance;
             Parallel.ForEach(assemblies, assembly =>
             {
-                var exposesDelegatesImplementations = assembly
-                    .GetTypes()
-                    .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == exposesDelegatesType))
+                var implementationTypes = assembly.GetExportedTypes()
+                    .Where(t => typeof(DelegateExposer).IsAssignableFrom(t))
+                    .Where(t => !t.IsAbstract)
                     .ToArray();
-
-                Parallel.ForEach(exposesDelegatesImplementations, imp =>
+                
+                Parallel.ForEach(implementationTypes, implementationType =>
                 {
-                    var delegateExposerType = imp.GetInterfaces().FirstOrDefault(i => i.IsGenericType && i.GetGenericTypeDefinition() == exposesDelegatesType)
-                        ?.GenericTypeArguments.FirstOrDefault();
-                    if (delegateExposerType == default)
-                        return;
-
-                    var delegateExposer = (DelegateExposer) serviceFactory(delegateExposerType);
+                    var delegateExposer = (DelegateExposer) serviceFactory(implementationType);
                     delegateExposer.ExposeDelegates(services);
                 });
             });
