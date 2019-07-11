@@ -39,5 +39,31 @@ namespace ServiceResolution.Tests
             // Assert
             serviceCollection.BuildServiceProvider().GetService<ServiceFactory>().ShouldNotBeNull();
         }
+
+        [Fact]
+        public void Should_Add_Exposed_Delegates()
+        {
+            // Arrange
+            var serviceCollection = new ServiceCollection();
+            
+            // Act
+            serviceCollection.AddExposedDelegates();
+            
+            // Assert
+            serviceCollection.BuildServiceProvider().GetService<TestExposesDelegates.TestDelegate>().ShouldNotBeNull();
+        }
+    }
+
+    internal class TestExposesDelegates : IExposesDelegates<TestExposesDelegates.TestDelegateExposer>
+    {
+        private class TestDelegateExposer : DelegateExposer
+        {
+            public override IServiceCollection ExposeDelegates(IServiceCollection services)
+            {
+                return services.AddSingleton<TestDelegate>(sp => () => Console.WriteLine("TEST"));
+            }
+        }
+
+        public delegate void TestDelegate();
     }
 }

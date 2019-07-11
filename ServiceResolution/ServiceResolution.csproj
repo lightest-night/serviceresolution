@@ -25,6 +25,7 @@
     </PropertyGroup>
     
     <ItemGroup>
+      <PackageReference Include="LightestNight.System.Utilities" Version="0.1.0-alpha0003" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     </ItemGroup>
 
