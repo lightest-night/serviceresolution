@@ -37,7 +37,7 @@ namespace LightestNight.System.ServiceResolution
             var serviceFactory = services.BuildServiceProvider().GetService<ServiceFactory>() ?? Activator.CreateInstance;
             Parallel.ForEach(assemblies, assembly =>
             {
-                var implementationTypes = assembly.GetExportedTypes()
+                var implementationTypes = assembly.GetTypes()
                     .Where(t => typeof(DelegateExposer).IsAssignableFrom(t))
                     .Where(t => !t.IsAbstract)
                     .ToArray();
