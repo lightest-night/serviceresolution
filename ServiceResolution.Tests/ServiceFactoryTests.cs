@@ -1,9 +1,8 @@
-using LightestNight.System.ServiceResolution;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using Xunit;
 
-namespace ServiceResolution.Tests
+namespace LightestNight.System.ServiceResolution.Tests
 {
     public class ServiceFactoryTests
     {
@@ -25,30 +24,30 @@ namespace ServiceResolution.Tests
 
             public Activator()
             {
-                _sut = System.Activator.CreateInstance;
+                _sut = global::System.Activator.CreateInstance;
             }
             
             [Fact]
             public void Should_Build_Object_Correctly_With_Parameterless_Constructor()
             {
                 // Act
-                var result = (TestObject) _sut(typeof(TestObject));
+                var result = _sut(typeof(TestObject)) as TestObject;
 
                 // Assert
-                result.Property.ShouldBe(nameof(TestObject));
+                result?.Property.ShouldBe(nameof(TestObject));
             }
 
             [Fact]
-            public void Should_Build_Object_With_Contructor_Parameters()
+            public void Should_Build_Object_With_Constructor_Parameters()
             {
                 // Arrange
                 const string property = "Test";
                 
                 // Act
-                var result = (TestObject) _sut(typeof(TestObject), property);
+                var result = _sut(typeof(TestObject), property) as TestObject;
                 
                 // Assert
-                result.Property.ShouldBe(property);
+                result?.Property.ShouldBe(property);
             }
         }
         
@@ -68,23 +67,23 @@ namespace ServiceResolution.Tests
             public void Should_Build_Object_Correctly_With_Parameterless_Constructor()
             {
                 // Act
-                var result = (TestObject) _sut(typeof(TestObject));
+                var result = _sut(typeof(TestObject)) as TestObject;
                 
                 // Assert
-                result.Property.ShouldBe(nameof(TestObject));
+                result?.Property.ShouldBe(nameof(TestObject));
             }
             
             [Fact]
-            public void Should_Build_Object_With_Contructor_Parameters()
+            public void Should_Build_Object_With_Constructor_Parameters()
             {
                 // Arrange
                 const string property = "Test";
                 
                 // Act
-                var result = (TestObject) _sut(typeof(TestObject), property);
+                var result = _sut(typeof(TestObject), property) as TestObject;
                 
                 // Assert
-                result.Property.ShouldBe(property);
+                result?.Property.ShouldBe(property);
             }
         }
     }

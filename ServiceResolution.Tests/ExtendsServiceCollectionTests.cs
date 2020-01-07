@@ -1,10 +1,9 @@
 using System;
-using LightestNight.System.ServiceResolution;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using Xunit;
 
-namespace ServiceResolution.Tests
+namespace LightestNight.System.ServiceResolution.Tests
 {
     public class ExtendsServiceCollectionTests
     {
