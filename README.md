@@ -13,6 +13,8 @@ Allows a single abstraction across Service Resolution to keep dependencies to a 
 * Other Containers
   * Map `ServiceFactory` to your container's activator. For example, in StructureMap it would look something like:
   > `cfg.For<ServiceFactory>().Use<ServiceFactory>(ctx => ctx.GetInstance);`
+
+----                                                                                                                                        
                                                                                                                                                                                                                                                                                   
 ##### Assembly Scanning
 It is possible to utilise Assembly Scanning to load services into the dependency container.
