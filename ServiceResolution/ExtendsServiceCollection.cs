@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using LightestNight.System.Utilities.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LightestNight.System.ServiceResolution
+namespace LightestNight.ServiceResolution
 {
     public static class ExtendsServiceCollection
     {
@@ -21,7 +21,7 @@ namespace LightestNight.System.ServiceResolution
         }
 
         /// <summary>
-        /// Uses reflection to add all delegates exposed using the <see cref="IExposesDelegates{TExposer}" /> interface
+        /// Uses reflection to add all delegates exposed
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add the delegates to</param>
         /// <param name="assemblies">A collection of <see cref="Assembly" /> to search in</param>
@@ -44,8 +44,8 @@ namespace LightestNight.System.ServiceResolution
                 
                 Parallel.ForEach(implementationTypes, implementationType =>
                 {
-                    var delegateExposer = (DelegateExposer) serviceFactory(implementationType);
-                    delegateExposer.ExposeDelegates(services);
+                    if (serviceFactory(implementationType) is DelegateExposer delegateExposer)
+                        delegateExposer.ExposeDelegates(services);
                 });
             });
 

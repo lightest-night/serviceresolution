@@ -1,0 +1,16 @@
+name: 'Nightly Artifact Cleanup'
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 1 * * *' # every night at 1am UTC
+
+jobs:
+  delete-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kolpav/purge-artifacts-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          expire-in: 0

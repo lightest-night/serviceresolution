@@ -1,5 +1,5 @@
 using System;
-using LightestNight.System.ServiceResolution;
+using LightestNight.ServiceResolution;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using Xunit;
@@ -10,7 +10,7 @@ namespace ServiceResolution.Tests
     {
         private static class TestServiceFactory
         {
-            public static object Create(Type type, params object[] args) => new object();
+            public static object? Create(Type type, params object?[]? args) => new();
         }
         
         [Fact]

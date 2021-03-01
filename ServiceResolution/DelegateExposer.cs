@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LightestNight.System.ServiceResolution
+namespace LightestNight.ServiceResolution
 {
     public abstract class DelegateExposer
     {
