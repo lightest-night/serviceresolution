@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using LightestNight.System.Utilities.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LightestNight.ServiceResolution
@@ -27,7 +26,7 @@ namespace LightestNight.ServiceResolution
         /// <param name="assemblies">A collection of <see cref="Assembly" /> to search in</param>
         public static IServiceCollection AddExposedDelegates(this IServiceCollection services, params Assembly[] assemblies)
         {
-            if (assemblies.IsNullOrEmpty())
+            if (!assemblies.Any())
                 assemblies = new[] {Assembly.GetCallingAssembly()};
 
             var executingAssembly = Assembly.GetExecutingAssembly();
